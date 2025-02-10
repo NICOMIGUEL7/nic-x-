@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .calculadora { display: inline-block; background: #333; padding: 20px; border-radius: 10px; color: white; }
+        .tela { width: 100%; height: 50px; font-size: 1.5em; text-align: right; }
+        button { width: 22%; height: 50px; font-size: 1.2em; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Calculadora Científica</h1>
+    <div class="calculadora">
+        <input type="text" id="tela" class="tela" disabled>
+        <br>
+        <button onclick="add('7')">7</button>
+        <button onclick="add('8')">8</button>
+        <button onclick="add('9')">9</button>
+        <button onclick="add('/')">/</button>
+        <button onclick="add('Math.sin(')">sin</button>
+        <br>
+        <button onclick="add('4')">4</button>
+        <button onclick="add('5')">5</button>
+        <button onclick="add('6')">6</button>
+        <button onclick="add('*')">*</button>
+        <button onclick="add('Math.cos(')">cos</button>
+        <br>
+        <button onclick="add('1')">1</button>
+        <button onclick="add('2')">2</button>
+        <button onclick="add('3')">3</button>
+        <button onclick="add('-')">-</button>
+        <button onclick="add('Math.tan(')">tan</button>
+        <br>
+        <button onclick="clearTela()">C</button>
+        <button onclick="add('0')">0</button>
+        <button onclick="calcular()">=</button>
+        <button onclick="add('+')">+</button>
+        <button onclick="add('Math.log10(')">log</button>
+        <br>
+        <button onclick="add('(')">(</button>
+        <button onclick="add(')')">)</button>
+        <button onclick="add('Math.sqrt(')">√</button>
+        <button onclick="add('**')">^</button>
+    </div>
+    
+    <script>
+        function add(valor) {
+            document.getElementById('tela').value += valor;
+        }
+
+        function calcular() {
+            try {
+                document.getElementById('tela').value = Function("return " + document.getElementById('tela').value + ")")();
+            } catch {
+                document.getElementById('tela').value = "Erro";
+            }
+        }
+
+        function clearTela() {
+            document.getElementById('tela').value = "";
+        }
+    </script>
+</body>
+</html>
